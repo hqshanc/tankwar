@@ -11,13 +11,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TankFrame extends Frame {
-    Tank myTank = new Tank(1000, 1000, Dir.UP, this, Group.GOOD, 10);
+    static final int GAME_WIDTH = Integer.parseInt(PropertyMgr.get("gameWidth")),
+            GAME_HEIGHT = Integer.parseInt(PropertyMgr.get("gameHeight"));
+    Tank myTank = new Tank(Integer.parseInt(PropertyMgr.get("gameWidth"))/2,
+            Integer.parseInt(PropertyMgr.get("gameHeight")), Dir.UP, this, Group.GOOD, 10);
     List<Bullet> bulles = new ArrayList<Bullet>();
     List<Tank> tanks = new ArrayList<Tank>();
     List<Explode> explodes = new ArrayList<Explode>();
-    Explode e = new Explode(200, 200, this);
-    static final int GAME_WIDTH = 1600, GAME_HEIGHT = 1000;
-
 
     public TankFrame() throws HeadlessException {
         this.setSize(GAME_WIDTH, GAME_HEIGHT);

@@ -8,7 +8,8 @@ public class Main {
         int badCount = Integer.parseInt(PropertyMgr.get("initTankCount"));
         //初始化敌方坦克
         for (int i = 0; i< badCount; i++) {
-            t.tanks.add(new Tank(new Random().nextInt(1000), new Random().nextInt(1000), Dir.DOWN, t,Group.BAD, 3));
+            t.tanks.add(new Tank(new Random().nextInt(Integer.parseInt(PropertyMgr.get("badTankLocation"))),
+                    new Random().nextInt(Integer.parseInt(PropertyMgr.get("badTankLocation"))), Dir.DOWN, t,Group.BAD, 3));
         }
         //循环调用刷新页面
         while (true) {
