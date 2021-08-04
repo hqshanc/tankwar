@@ -3,7 +3,7 @@ package com.shq.tank;
 import java.awt.*;
 
 public class Explode {
-    private static int WIDTH = ResourceMgr.explodes[0].getWidth(), HIGHT = ResourceMgr.explodes[0].getHeight();
+    private static int WIDTH = ResourceMgr.getInstance().explodes[0].getWidth(), HIGHT = ResourceMgr.getInstance().explodes[0].getHeight();
     private int x, y;
     private boolean live = true;
     private TankFrame tf;
@@ -24,8 +24,8 @@ public class Explode {
     }
 
     public void paint(Graphics g){
-        g.drawImage(ResourceMgr.explodes[step++], x, y, null);
-        if (step >= ResourceMgr.explodes.length) {this.setLive(false);}
+        g.drawImage(ResourceMgr.getInstance().explodes[step++], x, y, null);
+        if (step >= ResourceMgr.getInstance().explodes.length) {this.setLive(false);}
     }
 
 

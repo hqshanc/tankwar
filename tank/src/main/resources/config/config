@@ -2,3 +2,4 @@ initTankCount=10
 badTankLocation=1000
 gameWidth=1600
 gameHeight=1000
+bulletSpeed=30

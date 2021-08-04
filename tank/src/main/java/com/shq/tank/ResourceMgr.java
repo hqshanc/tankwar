@@ -5,10 +5,24 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ResourceMgr {
-    public static BufferedImage tankl, tanku,tankr, tankd;
-    public static BufferedImage bulletl, bulletu, bulletr, bulletd;
-    public static BufferedImage [] explodes = new BufferedImage[8];
-    static {
+
+    private volatile static ResourceMgr resMgr;
+    private ResourceMgr() {}
+
+    public static ResourceMgr getInstance(){
+        if (resMgr == null) {
+            synchronized (ResourceMgr.class){
+                if (resMgr == null) {
+                    resMgr = new ResourceMgr();
+                }
+            }
+        }
+        return resMgr;
+    }
+    public  BufferedImage tankl, tanku,tankr, tankd;
+    public  BufferedImage bulletl, bulletu, bulletr, bulletd;
+    public  BufferedImage [] explodes = new BufferedImage[8];
+    {
         try {
             tankl = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("image/tankl.png"));
             tanku = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("image/tanku.png"));

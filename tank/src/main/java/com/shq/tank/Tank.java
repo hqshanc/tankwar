@@ -5,11 +5,11 @@ import java.util.Random;
 
 public class Tank {
     private int x, y;
-    private Dir dir = Dir.DOWN;
+    private Dir dir;
     private int speed = 5;
     private boolean moving = false;
     private TankFrame tf = null;
-    public static int WIDTH = ResourceMgr.tankl.getWidth(), HIGHT = ResourceMgr.tankl.getHeight();
+    public static int WIDTH = ResourceMgr.getInstance().tankl.getWidth(), HIGHT = ResourceMgr.getInstance().tankl.getHeight();
     private boolean live = true;
     private Group group = Group.BAD;
     private Random random = new Random();
@@ -60,16 +60,16 @@ public class Tank {
         }
         switch (dir) {
             case LEFT:
-                g.drawImage(ResourceMgr.tankl, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().tankl, x, y, null);
                 break;
             case UP:
-                g.drawImage(ResourceMgr.tanku, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().tanku, x, y, null);
                 break;
             case RIGHT:
-                g.drawImage(ResourceMgr.tankr, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().tankr, x, y, null);
                 break;
             case DOWN:
-                g.drawImage(ResourceMgr.tankd, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().tankd, x, y, null);
                 break;
         }
         move();
@@ -157,16 +157,20 @@ public class Tank {
     public void fire() {
         switch (dir) {
             case LEFT:
-                tf.bulles.add(new Bullet(x - ResourceMgr.tankl.getWidth()/2  , y + ResourceMgr.bulletl.getHeight()/7*6 , dir, this.tf, this.group));
+                tf.bulles.add(new Bullet(x - ResourceMgr.getInstance().tankl.getWidth()/2  ,
+                        y + ResourceMgr.getInstance().bulletl.getHeight()/7*6 , dir, this.tf, this.group));
                 break;
             case UP:
-                tf.bulles.add(new Bullet(x + ResourceMgr.bulletl.getWidth()/7*6 , y - ResourceMgr.tanku.getWidth()/2 , dir, this.tf,this.group));
+                tf.bulles.add(new Bullet(x + ResourceMgr.getInstance().bulletl.getWidth()/7*6 ,
+                        y - ResourceMgr.getInstance().tanku.getWidth()/2 , dir, this.tf,this.group));
                 break;
             case RIGHT:
-                tf.bulles.add(new Bullet(x + ResourceMgr.tankr.getWidth() , y + ResourceMgr.bulletl.getHeight()/7*6 , dir, this.tf, this.group));
+                tf.bulles.add(new Bullet(x + ResourceMgr.getInstance().tankr.getWidth() ,
+                        y + ResourceMgr.getInstance().bulletl.getHeight()/7*6 , dir, this.tf, this.group));
                 break;
             case DOWN:
-                tf.bulles.add(new Bullet(x + ResourceMgr.bulletl.getWidth()/7*6, y + ResourceMgr.tanku.getWidth() , dir, this.tf, this.group));
+                tf.bulles.add(new Bullet(x + ResourceMgr.getInstance().bulletl.getWidth()/7*6,
+                        y + ResourceMgr.getInstance().tanku.getWidth() , dir, this.tf, this.group));
                 break;
 
         }

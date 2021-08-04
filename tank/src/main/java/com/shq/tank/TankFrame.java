@@ -14,7 +14,7 @@ public class TankFrame extends Frame {
     static final int GAME_WIDTH = Integer.parseInt(PropertyMgr.get("gameWidth")),
             GAME_HEIGHT = Integer.parseInt(PropertyMgr.get("gameHeight"));
     Tank myTank = new Tank(Integer.parseInt(PropertyMgr.get("gameWidth"))/2,
-            Integer.parseInt(PropertyMgr.get("gameHeight")), Dir.UP, this, Group.GOOD, 10);
+            Integer.parseInt(PropertyMgr.get("gameHeight"))- Tank.HIGHT, Dir.UP, this, Group.GOOD, 10);
     List<Bullet> bulles = new ArrayList<Bullet>();
     List<Tank> tanks = new ArrayList<Tank>();
     List<Explode> explodes = new ArrayList<Explode>();

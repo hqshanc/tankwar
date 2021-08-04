@@ -3,8 +3,8 @@ package com.shq.tank;
 import java.awt.*;
 
 public class Bullet {
-    private static final int speed = 30;
-    private static int WIDTH = ResourceMgr.bulletl.getWidth(), HIGHT = ResourceMgr.bulletl.getHeight();
+    private static final int speed = Integer.parseInt(PropertyMgr.get("bulletSpeed"));
+    private static int WIDTH = ResourceMgr.getInstance().bulletl.getWidth(), HIGHT = ResourceMgr.getInstance().bulletl.getHeight();
     private int x, y;
     private Dir dir;
     private boolean live = true;
@@ -48,16 +48,16 @@ public class Bullet {
 
         switch (dir) {
             case LEFT:
-                g.drawImage(ResourceMgr.bulletl, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().bulletl, x, y, null);
                 break;
             case UP:
-                g.drawImage(ResourceMgr.bulletu, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().bulletu, x, y, null);
                 break;
             case RIGHT:
-                g.drawImage(ResourceMgr.bulletr, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().bulletr, x, y, null);
                 break;
             case DOWN:
-                g.drawImage(ResourceMgr.bulletd, x, y, null);
+                g.drawImage(ResourceMgr.getInstance().bulletd, x, y, null);
                 break;
 
         }
