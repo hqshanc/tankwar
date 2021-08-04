@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Bullet {
     private static final int speed = Integer.parseInt(PropertyMgr.get("bulletSpeed"));
-    private static int WIDTH = ResourceMgr.getInstance().bulletl.getWidth(), HIGHT = ResourceMgr.getInstance().bulletl.getHeight();
+    static int WIDTH = ResourceMgr.getInstance().bulletl.getWidth(), HIGHT = ResourceMgr.getInstance().bulletl.getHeight();
     private int x, y;
     private Dir dir;
     private boolean live = true;
@@ -23,6 +23,7 @@ public class Bullet {
         rect.y = y;
         rect.width = WIDTH;
         rect.height = HIGHT;
+        tf.bulles.add(this);
     }
 
     public Group getGroup() {

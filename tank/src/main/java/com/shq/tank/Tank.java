@@ -4,16 +4,17 @@ import java.awt.*;
 import java.util.Random;
 
 public class Tank {
-    private int x, y;
-    private Dir dir;
+    int x, y;
+    Dir dir;
     private int speed = 5;
     private boolean moving = false;
-    private TankFrame tf = null;
+    TankFrame tf = null;
     public static int WIDTH = ResourceMgr.getInstance().tankl.getWidth(), HIGHT = ResourceMgr.getInstance().tankl.getHeight();
     private boolean live = true;
-    private Group group = Group.BAD;
+    Group group = Group.BAD;
     private Random random = new Random();
     Rectangle rect = new Rectangle();
+    FireStrategy fs = DefaultFireStrategy.getInstance();
     public int getX() {
         return x;
     }
@@ -155,26 +156,6 @@ public class Tank {
     }
 
     public void fire() {
-        switch (dir) {
-            case LEFT:
-                tf.bulles.add(new Bullet(x - ResourceMgr.getInstance().tankl.getWidth()/2  ,
-                        y + ResourceMgr.getInstance().bulletl.getHeight()/7*6 , dir, this.tf, this.group));
-                break;
-            case UP:
-                tf.bulles.add(new Bullet(x + ResourceMgr.getInstance().bulletl.getWidth()/7*6 ,
-                        y - ResourceMgr.getInstance().tanku.getWidth()/2 , dir, this.tf,this.group));
-                break;
-            case RIGHT:
-                tf.bulles.add(new Bullet(x + ResourceMgr.getInstance().tankr.getWidth() ,
-                        y + ResourceMgr.getInstance().bulletl.getHeight()/7*6 , dir, this.tf, this.group));
-                break;
-            case DOWN:
-                tf.bulles.add(new Bullet(x + ResourceMgr.getInstance().bulletl.getWidth()/7*6,
-                        y + ResourceMgr.getInstance().tanku.getWidth() , dir, this.tf, this.group));
-                break;
-
-        }
-
-
+        fs.fire(this);
     }
 }
