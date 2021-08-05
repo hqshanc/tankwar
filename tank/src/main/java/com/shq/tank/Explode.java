@@ -1,8 +1,10 @@
 package com.shq.tank;
 
+import com.shq.tank.abstractfactory.BaseExplode;
+
 import java.awt.*;
 
-public class Explode {
+public class Explode extends BaseExplode {
     private static int WIDTH = ResourceMgr.getInstance().explodes[0].getWidth(), HIGHT = ResourceMgr.getInstance().explodes[0].getHeight();
     private int x, y;
     private boolean live = true;
@@ -22,10 +24,10 @@ public class Explode {
     public void setLive(boolean live) {
         this.live = live;
     }
-
+    @Override
     public void paint(Graphics g){
         g.drawImage(ResourceMgr.getInstance().explodes[step++], x, y, null);
-        if (step >= ResourceMgr.getInstance().explodes.length) {this.setLive(false);}
+        if (step >= ResourceMgr.getInstance().explodes.length) {tf.explodes.remove(this);}
     }
 
 

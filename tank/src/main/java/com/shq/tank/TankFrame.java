@@ -1,6 +1,10 @@
 package com.shq.tank;
 
 
+import com.shq.tank.abstractfactory.BaseExplode;
+import com.shq.tank.abstractfactory.DefaultFactory;
+import com.shq.tank.abstractfactory.GameFactory;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -17,7 +21,9 @@ public class TankFrame extends Frame {
             Integer.parseInt(PropertyMgr.get("gameHeight"))- Tank.HIGHT, Dir.UP, this, Group.GOOD, 10);
     List<Bullet> bulles = new ArrayList<Bullet>();
     List<Tank> tanks = new ArrayList<Tank>();
-    List<Explode> explodes = new ArrayList<Explode>();
+    List<BaseExplode> explodes = new ArrayList<BaseExplode>();
+
+    GameFactory factory = new DefaultFactory();
 
     public TankFrame() throws HeadlessException {
         this.setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -65,13 +71,13 @@ public class TankFrame extends Frame {
             }
         }
 
-        for(Iterator<Explode> it = explodes.iterator();it.hasNext();){
-            Explode t = it.next();
-            if(!t.isLive()) {
-                it.remove();
-            }else {
+        for(Iterator<BaseExplode> it = explodes.iterator();it.hasNext();){
+            BaseExplode t = it.next();
+//            if(!t.isLive()) {
+//                it.remove();
+//            }else {
                 t.paint(g);
-            }
+//            }
         }
 
 

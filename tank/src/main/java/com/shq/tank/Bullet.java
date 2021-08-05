@@ -93,7 +93,7 @@ public class Bullet {
     public void collideWith(Tank tank) {
         if (this.getGroup() == tank.getGroup()) return;
         if (rect.intersects(tank.rect)) {
-            tf.explodes.add(new Explode(x,y,tf));
+            tf.explodes.add(tf.factory.createExplode(x,y,tf));
             //tank.die();
             this.setLive(false);
             tank.setLive(false);

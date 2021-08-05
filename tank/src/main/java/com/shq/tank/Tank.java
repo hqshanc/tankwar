@@ -1,9 +1,11 @@
 package com.shq.tank;
 
+import com.shq.tank.abstractfactory.BaseTank;
+
 import java.awt.*;
 import java.util.Random;
 
-public class Tank {
+public class Tank extends BaseTank {
     int x, y;
     Dir dir;
     private int speed = 5;
